@@ -1,0 +1,24 @@
+# === Secretos: NUNCA subir esto a GitHub ===
+.env
+.env.local
+*.key
+*.pem
+credenciales*
+
+# === Dependencias (se reinstalan, no hace falta subirlas) ===
+node_modules/
+venv/
+__pycache__/
+*.pyc
+
+# === Archivos del sistema / editor ===
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# === Logs y temporales ===
+*.log
+tmp/
+dist/
+build/
