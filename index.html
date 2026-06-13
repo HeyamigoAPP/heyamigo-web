@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hey Amigo — Tu compañero en el camino de migrar</title>
-<meta name="description" data-i18n="meta_desc" content="Hey Amigo es la plataforma con un agente de IA que acompaña a cada migrante: planifica tu viaje, organiza tus trámites y encuentra tu comunidad.">
+<title>Hey Amigo — Tu Asistente IA en el camino de migrar</title>
+<meta name="description" data-i18n="meta_desc" content="Hey Amigo es la plataforma con un Asistente IA que acompaña a cada migrante: planifica tu viaje, organiza tus trámites y encuentra tu comunidad.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* === Paleta de marca (NO modificar) === */
+  /* === Paleta de marca (cálida) === */
   --bg:#F7F4EC; --surface:#FFFDF8; --user-bubble:#E9E2D2;
   --accent:#3D6BD6; --accent-soft:#E4EBF9; --accent-deep:#27488F;
   --warm:#D96E3F; --warm-soft:#F8E7DC;
@@ -21,6 +21,9 @@
   --sh-cta:0 6px 18px rgba(61,107,214,.32);
   --r-card:20px;
   --grad-cta:linear-gradient(150deg,#4A78E0,#2F56B8);
+  /* === Tema oscuro del hero (IA) === */
+  --ink:#0B1020; --ink-2:#10182E; --ink-card:rgba(255,255,255,.06);
+  --ink-text:#EAF0FF; --ink-text2:#A7B4D6; --glow:#4A78E0;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
@@ -29,9 +32,9 @@ a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
 section{padding:88px 0}
-h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.18;color:var(--text)}
-.serif-it{font-style:italic;color:var(--accent-deep)}
-.eyebrow{font-family:var(--sans);font-weight:600;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.16;color:var(--text)}
+.serif-it{font-style:italic}
+.eyebrow{font-family:var(--sans);font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
 .lead{color:var(--text2);font-size:1.08rem;max-width:620px}
 .fl{height:15px;width:21px;border-radius:3px;border:1px solid rgba(42,38,32,.12);display:inline-block;vertical-align:-2px;object-fit:cover}
 
@@ -40,67 +43,93 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.18;color:var(--t
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 .globe.float{animation:float 3.4s ease-in-out infinite}
 
-/* === Header === */
-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(1.4);background:rgba(255,253,248,.78);border-bottom:1px solid var(--border)}
-.nav{display:flex;align-items:center;gap:18px;padding:14px 0}
-.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;font-size:1.28rem}
+/* === Header (adaptativo) === */
+header{position:sticky;top:0;z-index:60;transition:background .3s,border-color .3s,box-shadow .3s;border-bottom:1px solid transparent}
+.nav{display:flex;align-items:center;gap:18px;padding:16px 0}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;font-size:1.28rem;color:#fff;transition:color .3s}
 .brand .globe{width:34px;height:34px}
 .nav-links{display:flex;gap:26px;margin-left:18px}
-.nav-links a{color:var(--text2);font-weight:500;font-size:.95rem;transition:color .2s}
-.nav-links a:hover{color:var(--accent)}
+.nav-links a{color:rgba(234,240,255,.8);font-weight:500;font-size:.95rem;transition:color .2s}
+.nav-links a:hover{color:#fff}
 .nav-right{margin-left:auto;display:flex;align-items:center;gap:12px}
 .lang{position:relative}
-.lang-btn{display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:7px 12px;font-weight:600;font-size:.9rem;cursor:pointer;color:var(--text)}
-.lang-menu{position:absolute;right:0;top:calc(100% + 8px);background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--sh-2);padding:6px;min-width:148px;display:none}
+.lang-btn{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:7px 12px;font-weight:600;font-size:.9rem;cursor:pointer;color:#fff;transition:all .3s}
+.lang-menu{position:absolute;right:0;top:calc(100% + 8px);background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--sh-2);padding:6px;min-width:148px;display:none;z-index:5}
 .lang-menu.open{display:block}
 .lang-menu button{display:flex;align-items:center;gap:9px;width:100%;background:none;border:0;padding:9px 12px;border-radius:10px;font-size:.92rem;font-weight:500;cursor:pointer;color:var(--text);text-align:left}
 .lang-menu button:hover{background:var(--accent-soft);color:var(--accent-deep)}
-.btn{font-family:var(--sans);font-weight:600;border-radius:999px;padding:11px 20px;font-size:.95rem;cursor:pointer;border:0;transition:transform .12s,box-shadow .2s;white-space:nowrap}
+.btn{font-family:var(--sans);font-weight:600;border-radius:999px;padding:11px 20px;font-size:.95rem;cursor:pointer;border:0;transition:transform .12s,box-shadow .2s,background .3s,color .3s,border-color .3s;white-space:nowrap}
 .btn:active{transform:scale(.97)}
-.btn-ghost{background:transparent;color:var(--accent-deep);border:1px solid var(--border)}
-.btn-ghost:hover{border-color:var(--accent);background:var(--accent-soft)}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.28)}
+.btn-ghost:hover{background:rgba(255,255,255,.16)}
 .btn-cta{background:var(--grad-cta);color:#fff;box-shadow:var(--sh-cta)}
-.btn-cta:hover{box-shadow:0 8px 24px rgba(61,107,214,.42)}
+.btn-cta:hover{box-shadow:0 10px 28px rgba(61,107,214,.5);transform:translateY(-1px)}
 .btn-lg{padding:15px 30px;font-size:1.05rem}
-.menu-toggle{display:none;background:none;border:0;cursor:pointer;font-size:1.5rem;color:var(--text)}
+/* header tras scroll → claro */
+header.scrolled{background:rgba(255,253,248,.82);backdrop-filter:blur(18px) saturate(1.4);border-bottom-color:var(--border);box-shadow:var(--sh-1)}
+header.scrolled .brand{color:var(--text)}
+header.scrolled .nav-links a{color:var(--text2)}
+header.scrolled .nav-links a:hover{color:var(--accent)}
+header.scrolled .lang-btn{background:var(--surface);border-color:var(--border);color:var(--text)}
+header.scrolled .btn-ghost{background:transparent;color:var(--accent-deep);border-color:var(--border)}
+header.scrolled .btn-ghost:hover{background:var(--accent-soft);border-color:var(--accent)}
 
-/* === Hero === */
-.hero{background:radial-gradient(1200px 620px at 70% -120px,#F2EDDF,var(--bg));position:relative;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
-.hero h1{font-size:clamp(2.3rem,5vw,3.5rem);margin-bottom:20px}
-.hero .lead{font-size:1.18rem;margin-bottom:30px}
+/* === HERO oscuro (IA) === */
+.hero{position:relative;background:radial-gradient(1100px 700px at 78% -10%,#1E2C57 0%,rgba(30,44,87,0) 55%),radial-gradient(900px 600px at 12% 110%,#243a7a 0%,rgba(36,58,122,0) 50%),linear-gradient(180deg,#0B1020,#0E1430);color:var(--ink-text);overflow:hidden;padding-top:30px}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:120px;background:linear-gradient(180deg,rgba(247,244,236,0),var(--bg));pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:60px 0 96px;position:relative;z-index:2}
+.hero .eyebrow{color:#9FB8EE;display:inline-flex;align-items:center;gap:8px}
+.hero .eyebrow .spark{width:7px;height:7px;border-radius:50%;background:#7FA6FF;box-shadow:0 0 12px 3px rgba(127,166,255,.8)}
+.hero h1{font-size:clamp(2.4rem,5.2vw,3.7rem);margin-bottom:20px;color:#fff;letter-spacing:-.01em}
+.hero h1 .serif-it{color:#9FB8EE}
+.hero .lead{font-size:1.18rem;margin-bottom:30px;color:var(--ink-text2)}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.hero-note{margin-top:18px;font-size:.9rem;color:var(--text2);display:flex;align-items:center;gap:8px}
-.dot-ok{width:9px;height:9px;border-radius:50%;background:var(--success);box-shadow:0 0 0 4px rgba(76,138,95,.18)}
-.hero-flags{margin-top:26px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--text2);font-size:.86rem}
-.hero-flags .fl{height:18px;width:25px}
+.hero-note{margin-top:18px;font-size:.9rem;color:var(--ink-text2);display:flex;align-items:center;gap:8px}
+.dot-ok{width:9px;height:9px;border-radius:50%;background:#5BD08A;box-shadow:0 0 0 4px rgba(91,208,138,.18)}
+.hero-flags{margin-top:26px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--ink-text2);font-size:.86rem}
+.hero-flags .fl{height:18px;width:25px;border-color:rgba(255,255,255,.2)}
 
-/* phone mock */
-.phone{justify-self:center;width:300px;background:#1d1c1a;border-radius:42px;padding:11px;box-shadow:var(--sh-2);position:relative}
-.phone-screen{background:radial-gradient(900px 480px at 50% -80px,#F2EDDF,var(--user-bubble));border-radius:32px;padding:26px 18px 22px;min-height:540px;position:relative;overflow:hidden}
-.island{width:84px;height:24px;background:#1d1c1a;border-radius:999px;margin:0 auto 22px}
-.chat-greet{text-align:center;margin-bottom:20px}
-.chat-greet .globe{width:64px;height:64px}
-.chat-greet h3{font-size:1.25rem;margin-top:10px}
-.bubble{background:var(--surface);border:1px solid var(--border);border-radius:18px;border-bottom-left-radius:6px;padding:13px 15px;font-size:.92rem;box-shadow:var(--sh-1);margin-bottom:12px;max-width:90%}
-.bubble.me{background:var(--user-bubble);border:0;border-radius:18px;border-bottom-right-radius:6px;margin-left:auto}
-.chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-.chip{background:var(--accent-soft);color:var(--accent-deep);font-weight:600;font-size:.78rem;padding:7px 12px;border-radius:999px}
-.tabbar{position:absolute;left:14px;right:14px;bottom:14px;display:flex;justify-content:space-around;background:rgba(255,253,248,.82);backdrop-filter:blur(18px);border:1px solid var(--border);border-radius:24px;padding:10px 6px;box-shadow:var(--sh-2)}
-.tabbar span{font-size:1.15rem;opacity:.6}
-.tabbar span.on{opacity:1}
+/* Orbe de IA */
+.orb-stage{position:relative;height:420px;display:grid;place-items:center}
+.orb{position:relative;width:230px;height:230px;border-radius:50%;
+  background:radial-gradient(circle at 36% 30%,#9FC0FF 0%,#4A78E0 42%,#2A4FA8 72%,#1B2F66 100%);
+  box-shadow:0 0 90px 10px rgba(74,120,224,.55),inset -14px -16px 50px rgba(10,18,45,.6),inset 14px 14px 36px rgba(255,255,255,.35);
+  animation:orbFloat 6.5s ease-in-out infinite}
+@keyframes orbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+.orb::before{content:"";position:absolute;inset:-60px;border-radius:50%;background:radial-gradient(circle,rgba(74,120,224,.45),rgba(74,120,224,0) 65%);filter:blur(8px);z-index:-1;animation:pulseGlow 4s ease-in-out infinite}
+@keyframes pulseGlow{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.08)}}
+.orb .globe{width:74px;height:74px;filter:drop-shadow(0 6px 14px rgba(10,18,45,.5))}
+.orb-ring{position:absolute;border-radius:50%;border:1px solid rgba(159,184,238,.25)}
+.orb-ring.r1{inset:-34px;animation:spin 18s linear infinite}
+.orb-ring.r2{inset:-70px;border-style:dashed;border-color:rgba(159,184,238,.16);animation:spin 30s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orb-dot{position:absolute;width:11px;height:11px;border-radius:50%;background:#A9C6FF;box-shadow:0 0 14px 3px rgba(127,166,255,.9);top:50%;left:50%}
+.orb-dot.d1{transform:translate(-50%,-50%) rotate(0deg) translateX(132px);animation:orbit 12s linear infinite}
+.orb-dot.d2{width:8px;height:8px;background:#7FE0B0;box-shadow:0 0 14px 3px rgba(127,224,176,.9);transform:translate(-50%,-50%) rotate(140deg) translateX(168px);animation:orbit 16s linear infinite reverse}
+@keyframes orbit{to{transform:translate(-50%,-50%) rotate(360deg) translateX(132px) rotate(-360deg)}}
+/* burbujas de cristal flotantes */
+.float-bubble{position:absolute;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:11px 14px;font-size:.86rem;color:#EAF0FF;backdrop-filter:blur(12px);box-shadow:0 10px 30px rgba(5,10,30,.45);max-width:215px;line-height:1.45}
+.float-bubble b{color:#9FB8EE;font-weight:600}
+.fb1{top:26px;left:-6px;animation:floatB 7s ease-in-out infinite}
+.fb2{bottom:74px;right:-10px;animation:floatB 8s ease-in-out infinite .8s}
+.fb3{bottom:6px;left:34px;animation:floatB 6.4s ease-in-out infinite .4s}
+@keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.typing{display:inline-flex;gap:4px;align-items:center}
+.typing i{width:6px;height:6px;border-radius:50%;background:#9FB8EE;display:inline-block;animation:blink 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{opacity:.3}30%{opacity:1}}
 
-/* === Trust strip === */
-.strip{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+/* === Strip métricas === */
+.strip{background:var(--surface);border-bottom:1px solid var(--border);margin-top:-1px}
 .strip .wrap{display:flex;justify-content:space-around;gap:24px;flex-wrap:wrap;padding:34px 22px}
 .stat{text-align:center}
 .stat b{display:block;font-family:var(--serif);font-size:2rem;color:var(--accent-deep);font-variant-numeric:tabular-nums}
 .stat span{color:var(--text2);font-size:.9rem}
 
-/* === Section heading === */
 .sec-head{text-align:center;max-width:680px;margin:0 auto 56px}
 .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.6rem);margin-bottom:14px}
 .sec-head .lead{margin:0 auto}
+.sec-head .serif-it{color:var(--accent-deep)}
 
 /* === La Ruta === */
 .ruta{background:linear-gradient(180deg,var(--bg),#F2EDDF)}
@@ -121,17 +150,64 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(1.4)
 .mod:hover{transform:translateY(-4px);box-shadow:var(--sh-2)}
 .mod .ic{width:50px;height:50px;border-radius:14px;background:var(--accent-soft);display:grid;place-items:center;font-size:1.5rem;margin-bottom:16px}
 .mod.warm .ic{background:var(--warm-soft)}
+.mod.ai .ic{background:linear-gradient(150deg,#4A78E0,#2F56B8);box-shadow:0 8px 20px rgba(61,107,214,.35)}
 .mod h3{font-size:1.2rem;margin-bottom:8px}
 .mod p{color:var(--text2);font-size:.95rem}
 
-/* === Agente destacado === */
-.agent{background:var(--accent-deep);color:#fff;border-radius:28px;padding:54px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;box-shadow:var(--sh-2)}
+/* === Asistente IA destacado (oscuro) === */
+.agent{position:relative;background:radial-gradient(700px 400px at 85% -20%,#274089,rgba(39,64,137,0) 60%),linear-gradient(160deg,#101A36,#1A2A56);color:#fff;border-radius:28px;padding:54px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;box-shadow:0 24px 60px rgba(11,16,32,.35);overflow:hidden}
 .agent h2{color:#fff;font-size:clamp(1.8rem,3.4vw,2.4rem);margin-bottom:14px}
-.agent p{color:#D9E2F5;font-size:1.05rem;margin-bottom:10px}
+.agent p{color:#C7D2EC;font-size:1.05rem;margin-bottom:10px}
 .agent .eyebrow{color:#9FB8EE}
-.agent-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:22px;backdrop-filter:blur(8px)}
-.agent-card .bubble{background:rgba(255,255,255,.95);color:var(--text);margin-bottom:10px}
-.agent-card .bubble.me{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.agent-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:22px;backdrop-filter:blur(8px)}
+.agent-card .bubble{border-radius:16px;padding:12px 15px;font-size:.93rem;margin-bottom:10px;line-height:1.45}
+.agent-card .bubble.me{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.18);border-bottom-right-radius:5px;margin-left:auto;max-width:85%}
+.agent-card .bubble.ai{background:rgba(255,255,255,.95);color:var(--text);border-bottom-left-radius:5px;max-width:90%}
+
+/* === Demo interactiva === */
+.demo{background:radial-gradient(700px 380px at 50% 0,#EAF0FB,var(--bg) 60%)}
+.demo-stage{display:grid;place-items:center}
+.demo-phone{width:320px;max-width:88vw;background:#15161a;border-radius:46px;padding:12px;box-shadow:0 30px 70px rgba(20,30,70,.22),0 0 0 2px rgba(0,0,0,.04);position:relative}
+.demo-phone::after{content:"";position:absolute;inset:-40px;border-radius:60px;background:radial-gradient(circle,rgba(74,120,224,.18),transparent 70%);z-index:-1}
+.demo-screen{background:radial-gradient(600px 360px at 50% -60px,#F2EDDF,var(--user-bubble));border-radius:36px;height:580px;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.demo-island{width:96px;height:26px;background:#15161a;border-radius:999px;margin:12px auto 6px;flex:0 0 auto}
+.demo-body{flex:1;overflow:hidden;padding:8px 16px 96px}
+.demo-body.swap{animation:rise .35s ease}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.d-greet{text-align:center;margin:6px 0 16px}
+.d-greet .globe{width:58px;height:58px}
+.d-greet h4{font-family:var(--serif);font-size:1.25rem;margin-top:8px}
+.d-bubble{background:var(--surface);border:1px solid var(--border);border-radius:16px;border-bottom-left-radius:5px;padding:11px 13px;font-size:.86rem;box-shadow:var(--sh-1);margin-bottom:9px;max-width:90%}
+.d-bubble.me{background:var(--user-bubble);border:0;border-bottom-right-radius:5px;border-bottom-left-radius:16px;margin-left:auto}
+.d-title{font-family:var(--serif);font-weight:600;font-size:1.1rem;margin:8px 4px 14px}
+.d-item{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px;margin-bottom:10px;box-shadow:var(--sh-1)}
+.d-item.hot{border-color:var(--accent);border-width:1.5px}
+.d-item .d-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex:0 0 auto}
+.d-item.hot .d-dot{background:var(--warm)}
+.d-item b{display:block;font-size:.9rem}.d-item span{font-size:.78rem;color:var(--text2)}
+.d-route{position:relative;padding-left:6px}
+.d-step{display:flex;gap:12px;align-items:center;margin-bottom:16px}
+.d-node{width:34px;height:34px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:.85rem;background:var(--surface);border:2px solid var(--border);color:var(--text2)}
+.d-step.done .d-node{background:var(--success);border-color:var(--success);color:#fff}
+.d-step.now .d-node{background:var(--grad-cta);border-color:transparent;color:#fff}
+.d-step span{font-size:.9rem}
+.d-post{display:flex;gap:11px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px;margin-bottom:10px;box-shadow:var(--sh-1)}
+.d-av,.d-pav{flex:0 0 auto;width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:grid;place-items:center;font-family:var(--serif);font-weight:700;color:var(--accent-deep)}
+.d-post b{font-size:.85rem;display:flex;align-items:center;gap:5px}.d-post span{font-size:.8rem;color:var(--text2)}
+.d-prof{text-align:center;margin:10px 0 18px}
+.d-pav{width:64px;height:64px;margin:0 auto 8px;font-size:1.4rem}
+.d-prof h4{font-family:var(--serif);font-size:1.2rem}
+.d-origin{font-size:.84rem;color:var(--text2);display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px}
+.d-stats{display:flex;gap:10px}
+.d-stat{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 8px;text-align:center;box-shadow:var(--sh-1)}
+.d-stat b{display:block;font-family:var(--serif);font-size:1.3rem;color:var(--accent-deep)}.d-stat span{font-size:.72rem;color:var(--text2)}
+.demo-tabbar{position:absolute;left:12px;right:12px;bottom:12px;display:flex;justify-content:space-around;background:rgba(255,253,248,.85);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:22px;padding:8px 4px;box-shadow:var(--sh-2)}
+.d-tab{background:none;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 8px;border-radius:12px;color:var(--text2);font-family:var(--sans);font-size:.62rem;font-weight:600;transition:.15s}
+.d-tab .d-ic{font-size:1.15rem;line-height:1}
+.d-tab .d-ic .globe{width:20px;height:20px}
+.d-tab.on{color:var(--accent-deep);background:var(--accent-soft)}
+.d-tab:active{transform:scale(.94)}
+.demo-hint{text-align:center;color:var(--text2);font-size:.88rem;margin-top:22px}
 
 /* === Testimonios === */
 .grid-test{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -153,35 +229,38 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(1.4)
 
 /* === CTA final === */
 .cta-final{text-align:center}
-.cta-box{background:var(--grad-cta);border-radius:28px;padding:60px 30px;box-shadow:var(--sh-cta)}
+.cta-box{position:relative;background:radial-gradient(600px 300px at 50% -40%,#5B86E8,rgba(91,134,232,0) 60%),var(--grad-cta);border-radius:28px;padding:60px 30px;box-shadow:var(--sh-cta);overflow:hidden}
 .cta-box h2{color:#fff;font-size:clamp(1.9rem,3.6vw,2.6rem);margin-bottom:14px}
 .cta-box p{color:#E4EBF9;font-size:1.1rem;margin-bottom:28px}
 .cta-box .btn-ghost{background:#fff;border-color:#fff;color:var(--accent-deep)}
+.cta-box .btn-ghost:hover{background:#fff}
 .cta-box .btn-light{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.5)}
 
 /* === Footer === */
-footer{background:var(--surface);border-top:1px solid var(--border);padding:48px 0 30px}
+footer{background:var(--ink);color:var(--ink-text2);padding:48px 0 30px}
 .foot-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:30px}
 .foot-brand{max-width:300px}
-.foot-brand .brand{margin-bottom:12px}
-.foot-brand p{color:var(--text2);font-size:.92rem}
-.foot-col h4{font-family:var(--sans);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text2);margin-bottom:14px}
-.foot-col a{display:block;color:var(--text);font-size:.95rem;margin-bottom:9px;transition:color .2s}
-.foot-col a:hover{color:var(--accent)}
-.foot-bottom{border-top:1px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--text2);font-size:.86rem}
+.foot-brand .brand{margin-bottom:12px;color:#fff}
+.foot-brand p{color:var(--ink-text2);font-size:.92rem}
+.foot-col h4{font-family:var(--sans);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:#7E8BB0;margin-bottom:14px}
+.foot-col a{display:block;color:#D6DEF2;font-size:.95rem;margin-bottom:9px;transition:color .2s}
+.foot-col a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#7E8BB0;font-size:.86rem}
 
 @media (max-width:880px){
   .hero-grid,.agent{grid-template-columns:1fr}
-  .phone{order:-1}
+  .orb-stage{order:-1;height:340px;margin-bottom:10px}
+  .orb{width:180px;height:180px}.orb .globe{width:58px;height:58px}
+  .float-bubble{max-width:175px;font-size:.8rem}
   .grid-mods,.grid-test{grid-template-columns:1fr 1fr}
   .nav-links{display:none}
-  .menu-toggle{display:block}
 }
 @media (max-width:560px){
   section{padding:64px 0}
   .grid-mods,.grid-test{grid-template-columns:1fr}
   .agent{padding:32px}
   .nav-right .label-hide{display:none}
+  .fb1{left:-2px}.fb2{right:-2px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
 </style>
@@ -199,13 +278,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
 </g>
 </defs></svg>
 
-<header>
+<header id="header">
   <div class="wrap nav">
     <a href="#" class="brand"><svg class="globe" viewBox="0 0 48 48"><use href="#globe-shape"/></svg>Hey Amigo</a>
     <nav class="nav-links">
       <a href="#ruta" data-i18n="nav_ruta">La Ruta</a>
       <a href="#modulos" data-i18n="nav_mod">Funciones</a>
-      <a href="#agente" data-i18n="nav_agente">Agente IA</a>
+      <a href="#agente" data-i18n="nav_agente">Asistente IA</a>
       <a href="#faq" data-i18n="nav_faq">Preguntas</a>
     </nav>
     <div class="nav-right">
@@ -228,15 +307,15 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
 <!-- HERO -->
 <section class="hero">
   <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow" data-i18n="hero_eyebrow">Tu compañero de migración</div>
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="spark"></span><span data-i18n="hero_eyebrow">Asistente IA para migrantes</span></div>
       <h1 data-i18n="hero_title">No migras solo. <span class="serif-it">Migras con un amigo.</span></h1>
-      <p class="lead" data-i18n="hero_lead">Hey Amigo es la plataforma con un agente de inteligencia artificial que te acompaña paso a paso: planifica tu viaje, organiza tus trámites y encuentra tu comunidad en tu nuevo país.</p>
+      <p class="lead" data-i18n="hero_lead">Hey Amigo es la plataforma con un Asistente IA que te acompaña paso a paso: planifica tu viaje, organiza tus trámites y encuentra tu comunidad en tu nuevo país.</p>
       <div class="hero-actions">
         <a href="https://heyamigo.io" class="btn btn-cta btn-lg" data-i18n="hero_cta">Empezar gratis</a>
         <a href="https://heyamigo.io" class="btn btn-ghost btn-lg" data-i18n="hero_login">Ya tengo cuenta</a>
       </div>
-      <div class="hero-note"><span class="dot-ok"></span><span data-i18n="hero_note">Gratis para empezar · Tu amigo disponible 24/7</span></div>
+      <div class="hero-note"><span class="dot-ok"></span><span data-i18n="hero_note">Gratis para empezar · Tu Asistente IA disponible 24/7</span></div>
       <div class="hero-flags">
         <span data-i18n="hero_flags">Acompañando viajes hacia Europa:</span>
         <img class="fl" src="https://flagcdn.com/w40/es.png" alt="España">
@@ -246,30 +325,54 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
         <img class="fl" src="https://flagcdn.com/w40/pt.png" alt="Portugal">
       </div>
     </div>
-    <div class="phone">
-      <div class="phone-screen">
-        <div class="island"></div>
-        <div class="chat-greet">
-          <svg class="globe float" viewBox="0 0 48 48"><use href="#globe-shape"/></svg>
-          <h3 data-i18n="phone_greet">Hola, <span class="serif-it">Rafael</span></h3>
+    <div class="hero-visual">
+      <div class="orb-stage">
+        <div class="orb-ring r2"></div>
+        <div class="orb-ring r1"></div>
+        <div class="orb">
+          <svg class="globe" viewBox="0 0 48 48"><use href="#globe-shape"/></svg>
+          <span class="orb-dot d1"></span>
+          <span class="orb-dot d2"></span>
         </div>
-        <div class="bubble" data-i18n="phone_b1">¿A qué país estás <i>migrando</i>? Te preparo tu ruta paso a paso. 🧭</div>
-        <div class="bubble me" data-i18n="phone_b2">A España, desde Venezuela 🇻🇪</div>
-        <div class="bubble" data-i18n="phone_b3">¡Genial! Empecemos por tu visado y el empadronamiento.</div>
-        <div class="chip-row">
-          <span class="chip" data-i18n="phone_chip1">📄 Mis documentos</span>
-          <span class="chip" data-i18n="phone_chip2">🗓 Mi agenda</span>
-        </div>
-        <div class="tabbar"><span>🗓</span><span>🧭</span><span class="on"><svg class="globe" style="width:22px;height:22px" viewBox="0 0 48 48"><use href="#globe-shape"/></svg></span><span>👥</span><span>👤</span></div>
+        <div class="float-bubble fb1" data-i18n="phone_b1">¿A qué país estás <i>migrando</i>? Te preparo tu ruta paso a paso. 🧭</div>
+        <div class="float-bubble fb2" data-i18n="phone_b3">¡Genial! Empecemos por tu visado y el empadronamiento.</div>
+        <div class="float-bubble fb3"><b data-i18n="phone_greet">Asistente IA</b><br><span class="typing"><i></i><i></i><i></i></span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- DEMO INTERACTIVA -->
+<section id="demo" class="demo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-i18n="demo_eyebrow">Demo interactiva</div>
+      <h2 data-i18n="demo_title">Así se siente Hey Amigo por dentro</h2>
+      <p class="lead" data-i18n="demo_lead">Muévete entre los módulos y descubre cómo tu Asistente IA lo conecta todo.</p>
+    </div>
+    <div class="demo-stage">
+      <div class="demo-phone">
+        <div class="demo-screen">
+          <div class="demo-island"></div>
+          <div class="demo-body" id="demoBody"></div>
+          <div class="demo-tabbar" id="demoTabs">
+            <button class="d-tab" data-screen="agenda"><span class="d-ic">🗓</span><span class="d-lbl">Agenda</span></button>
+            <button class="d-tab" data-screen="guia"><span class="d-ic">🧭</span><span class="d-lbl">Guía</span></button>
+            <button class="d-tab" data-screen="asistente"><span class="d-ic"><svg class="globe" viewBox="0 0 48 48"><use href="#globe-shape"/></svg></span><span class="d-lbl">Asistente</span></button>
+            <button class="d-tab" data-screen="comunidad"><span class="d-ic">👥</span><span class="d-lbl">Comunidad</span></button>
+            <button class="d-tab" data-screen="perfil"><span class="d-ic">👤</span><span class="d-lbl">Perfil</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="demo-hint" id="demoHint">Toca los iconos para moverte entre módulos</p>
   </div>
 </section>
 
 <!-- STRIP -->
 <div class="strip">
   <div class="wrap">
-    <div class="stat"><b>24/7</b><span data-i18n="stat1">Agente de IA disponible</span></div>
+    <div class="stat"><b>24/7</b><span data-i18n="stat1">Asistente IA disponible</span></div>
     <div class="stat"><b>3</b><span data-i18n="stat2">Idiomas: ES · EN · FR</span></div>
     <div class="stat"><b>1</b><span data-i18n="stat3">Lugar para todo tu proceso</span></div>
     <div class="stat"><b>100%</b><span data-i18n="stat4">Pensado para el migrante</span></div>
@@ -282,20 +385,20 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
     <div class="sec-head">
       <div class="eyebrow" data-i18n="ruta_eyebrow">La Ruta</div>
       <h2 data-i18n="ruta_title">Migrar es un <span class="serif-it">viaje</span>. Te guiamos en cada parada.</h2>
-      <p class="lead" data-i18n="ruta_lead">Tu amigo convierte un proceso confuso en pasos claros. Sabes siempre dónde estás y qué viene después.</p>
+      <p class="lead" data-i18n="ruta_lead">Tu Asistente IA convierte un proceso confuso en pasos claros. Sabes siempre dónde estás y qué viene después.</p>
     </div>
     <div class="route">
       <div class="stop done">
         <div class="node">✓</div>
-        <div class="stop-body"><h3 data-i18n="ruta_s1_t">1 · Planifica antes de salir</h3><p data-i18n="ruta_s1_d">Cuéntale a tu amigo a dónde vas. Crea tu plan, tu lista de documentos y tu calendario antes de subir al avión.</p></div>
+        <div class="stop-body"><h3 data-i18n="ruta_s1_t">1 · Planifica antes de salir</h3><p data-i18n="ruta_s1_d">Cuéntale a tu Asistente IA a dónde vas. Crea tu plan, tu lista de documentos y tu calendario antes de subir al avión.</p></div>
       </div>
       <div class="stop now">
         <div class="node"><svg class="globe" style="width:30px;height:30px" viewBox="0 0 48 48"><use href="#globe-shape"/></svg></div>
-        <div class="stop-body"><h3 data-i18n="ruta_s2_t">2 · Llega y oriéntate</h3><p data-i18n="ruta_s2_d">Recién llegado, todo es nuevo. Tu amigo te explica los primeros pasos: dónde ir, qué hacer y cómo moverte.</p></div>
+        <div class="stop-body"><h3 data-i18n="ruta_s2_t">2 · Llega y oriéntate</h3><p data-i18n="ruta_s2_d">Recién llegado, todo es nuevo. Tu Asistente IA te explica los primeros pasos: dónde ir, qué hacer y cómo moverte.</p></div>
       </div>
       <div class="stop">
         <div class="node">3</div>
-        <div class="stop-body"><h3 data-i18n="ruta_s3_t">3 · Trámites y documentos</h3><p data-i18n="ruta_s3_d">Visados, empadronamiento, papeles… Tu amigo te dice qué necesitas, en qué orden y te lo recuerda a tiempo.</p></div>
+        <div class="stop-body"><h3 data-i18n="ruta_s3_t">3 · Trámites y documentos</h3><p data-i18n="ruta_s3_d">Visados, empadronamiento, papeles… Tu Asistente IA te dice qué necesitas, en qué orden y te lo recuerda a tiempo.</p></div>
       </div>
       <div class="stop">
         <div class="node">4</div>
@@ -311,33 +414,33 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
     <div class="sec-head">
       <div class="eyebrow" data-i18n="mod_eyebrow">Todo en un solo lugar</div>
       <h2 data-i18n="mod_title">Una plataforma, todo lo que necesitas</h2>
-      <p class="lead" data-i18n="mod_lead">Cada módulo está conectado con tu agente de IA, así que todo trabaja junto por ti.</p>
+      <p class="lead" data-i18n="mod_lead">Cada módulo está conectado con tu Asistente IA, así que todo trabaja junto por ti.</p>
     </div>
     <div class="grid-mods">
-      <div class="mod warm"><div class="ic">💬</div><h3 data-i18n="m1_t">Agente de IA</h3><p data-i18n="m1_d">Tu amigo personal que entiende tu situación, responde tus dudas y te guía a través de toda la app.</p></div>
+      <div class="mod ai"><div class="ic">🤖</div><h3 data-i18n="m1_t">Asistente IA</h3><p data-i18n="m1_d">Tu asistente de IA personal: entiende tu situación, responde tus dudas y te guía por toda la app.</p></div>
       <div class="mod"><div class="ic">🧭</div><h3 data-i18n="m2_t">La Guía</h3><p data-i18n="m2_d">Tu ruta de migración paso a paso, adaptada a tu país de origen y destino.</p></div>
       <div class="mod"><div class="ic">🗓</div><h3 data-i18n="m3_t">Agenda</h3><p data-i18n="m3_d">Citas, plazos y recordatorios para que no se te pase ningún trámite importante.</p></div>
       <div class="mod"><div class="ic">📄</div><h3 data-i18n="m4_t">Documentos</h3><p data-i18n="m4_d">Guarda y organiza tus papeles importantes en un lugar seguro y siempre a mano.</p></div>
       <div class="mod"><div class="ic">📚</div><h3 data-i18n="m5_t">Recursos</h3><p data-i18n="m5_d">Información verificada, trámites, derechos y servicios útiles de tu nuevo país.</p></div>
-      <div class="mod"><div class="ic">👥</div><h3 data-i18n="m6_t">Comunidad</h3><p data-i18n="m6_d">Conecta con otros migrantes, comparte experiencias y siéntete acompañado.</p></div>
+      <div class="mod warm"><div class="ic">👥</div><h3 data-i18n="m6_t">Comunidad</h3><p data-i18n="m6_d">Conecta con otros migrantes, comparte experiencias y siéntete acompañado.</p></div>
     </div>
   </div>
 </section>
 
-<!-- AGENTE -->
+<!-- ASISTENTE IA -->
 <section id="agente">
   <div class="wrap">
     <div class="agent">
       <div>
         <div class="eyebrow" data-i18n="ag_eyebrow">El corazón de Hey Amigo</div>
-        <h2 data-i18n="ag_title">Un amigo que entiende lo que vives</h2>
-        <p data-i18n="ag_p1">El agente de IA no es un chatbot frío. Conoce tu plan, tus documentos y tu agenda, y te habla en tu idioma con calidez.</p>
+        <h2 data-i18n="ag_title">Un Asistente IA que entiende lo que vives</h2>
+        <p data-i18n="ag_p1">El Asistente IA no es un chatbot frío. Conoce tu plan, tus documentos y tu agenda, y te habla en tu idioma con calidez.</p>
         <p data-i18n="ag_p2">Pregúntale lo que sea: desde "¿cómo me empadrono?" hasta "tengo miedo, ¿por dónde empiezo?".</p>
-        <a href="https://heyamigo.io" class="btn btn-cta btn-lg" style="margin-top:18px" data-i18n="ag_cta">Hablar con mi amigo</a>
+        <a href="https://heyamigo.io" class="btn btn-cta btn-lg" style="margin-top:18px" data-i18n="ag_cta">Hablar con el Asistente IA</a>
       </div>
       <div class="agent-card">
         <div class="bubble me" data-i18n="ag_b1">Acabo de llegar y no sé por dónde empezar 😟</div>
-        <div class="bubble" data-i18n="ag_b2">Tranquilo, estoy contigo. Lo primero es el empadronamiento. Te he añadido los 3 pasos a tu agenda. ¿Vamos juntos?</div>
+        <div class="bubble ai" data-i18n="ag_b2">Tranquilo, estoy contigo. Lo primero es el empadronamiento. Te he añadido los 3 pasos a tu agenda. ¿Vamos juntos?</div>
         <div class="bubble me" data-i18n="ag_b3">Sí, por favor 🙏</div>
       </div>
     </div>
@@ -354,14 +457,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
     <div class="grid-test">
       <div class="quote">
         <p data-i18n="t1_q">"Llegué a Madrid sin conocer a nadie. Hey Amigo me organizó los trámites y me sentí acompañado desde el primer día."</p>
-        <div class="who"><div class="av">R</div><div><b>Rafael</b><small><img class="fl" src="https://flagcdn.com/w40/ve.png" alt=""> <span data-i18n="t1_w">Venezuela → España</span></small></div></div>
+        <div class="who"><div class="av">C</div><div><b>Carlos</b><small><img class="fl" src="https://flagcdn.com/w40/ve.png" alt=""> <span data-i18n="t1_w">Venezuela → España</span></small></div></div>
       </div>
       <div class="quote">
         <p data-i18n="t2_q">"La agenda con recordatorios me salvó. No se me pasó ni una cita importante de mis papeles."</p>
         <div class="who"><div class="av">A</div><div><b>Amina</b><small><img class="fl" src="https://flagcdn.com/w40/ma.png" alt=""> <span data-i18n="t2_w">Marruecos → Francia</span></small></div></div>
       </div>
       <div class="quote">
-        <p data-i18n="t3_q">"Poder preguntarle cualquier cosa al agente, a cualquier hora y en mi idioma, me quitó muchísima ansiedad."</p>
+        <p data-i18n="t3_q">"Poder preguntarle cualquier cosa al Asistente IA, a cualquier hora y en mi idioma, me quitó muchísima ansiedad."</p>
         <div class="who"><div class="av">L</div><div><b>Lucía</b><small><img class="fl" src="https://flagcdn.com/w40/co.png" alt=""> <span data-i18n="t3_w">Colombia → Alemania</span></small></div></div>
       </div>
     </div>
@@ -377,10 +480,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
     </div>
     <div class="faq">
       <details class="q"><summary data-i18n="f1_q">¿Hey Amigo es gratis?</summary><div class="a" data-i18n="f1_a">Puedes empezar gratis y usar las funciones esenciales sin coste. Más adelante podrás ampliar con funciones avanzadas.</div></details>
-      <details class="q"><summary data-i18n="f2_q">¿En qué idiomas está disponible?</summary><div class="a" data-i18n="f2_a">Esta web está en español, inglés y francés. Dentro de la app, tu amigo de IA puede comunicarse contigo en tu idioma.</div></details>
+      <details class="q"><summary data-i18n="f2_q">¿En qué idiomas está disponible?</summary><div class="a" data-i18n="f2_a">Esta web está en español, inglés y francés. Dentro de la app, tu Asistente IA puede comunicarse contigo en tu idioma.</div></details>
       <details class="q"><summary data-i18n="f3_q">¿Mis documentos están seguros?</summary><div class="a" data-i18n="f3_a">Sí. Tus documentos se guardan de forma privada y solo tú decides qué compartes. Cuidamos tu información como propia.</div></details>
       <details class="q"><summary data-i18n="f4_q">¿Sirve si todavía no he migrado?</summary><div class="a" data-i18n="f4_a">¡Claro! Hey Amigo te ayuda a planificar antes de salir y te acompaña una vez que llegas a tu nuevo país.</div></details>
-      <details class="q"><summary data-i18n="f5_q">¿Cómo empiezo?</summary><div class="a" data-i18n="f5_a">Solo pulsa "Empezar gratis", crea tu cuenta en la app y tu amigo te guiará desde el primer mensaje.</div></details>
+      <details class="q"><summary data-i18n="f5_q">¿Cómo empiezo?</summary><div class="a" data-i18n="f5_a">Solo pulsa "Empezar gratis", crea tu cuenta en la app y tu Asistente IA te guiará desde el primer mensaje.</div></details>
     </div>
   </div>
 </section>
@@ -390,7 +493,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
   <div class="wrap">
     <div class="cta-box">
       <h2 data-i18n="cta_title">Tu nuevo comienzo merece un buen amigo</h2>
-      <p data-i18n="cta_p">Crea tu cuenta hoy y da el primer paso de tu ruta, acompañado.</p>
+      <p data-i18n="cta_p">Crea tu cuenta hoy y da el primer paso de tu ruta, con tu Asistente IA al lado.</p>
       <div class="hero-actions" style="justify-content:center">
         <a href="https://heyamigo.io" class="btn btn-ghost btn-lg" data-i18n="cta_signup">Empezar gratis</a>
         <a href="https://heyamigo.io" class="btn btn-light btn-lg" data-i18n="cta_login">Iniciar sesión</a>
@@ -405,13 +508,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
     <div class="foot-grid">
       <div class="foot-brand">
         <a href="#" class="brand"><svg class="globe" viewBox="0 0 48 48"><use href="#globe-shape"/></svg>Hey Amigo</a>
-        <p data-i18n="foot_tag">La plataforma que acompaña a cada migrante en su camino, con un amigo de IA siempre a su lado.</p>
+        <p data-i18n="foot_tag">La plataforma que acompaña a cada migrante en su camino, con un Asistente IA siempre a su lado.</p>
       </div>
       <div class="foot-col">
         <h4 data-i18n="foot_prod">Producto</h4>
         <a href="#ruta" data-i18n="nav_ruta">La Ruta</a>
         <a href="#modulos" data-i18n="nav_mod">Funciones</a>
-        <a href="#agente" data-i18n="nav_agente">Agente IA</a>
+        <a href="#agente" data-i18n="nav_agente">Asistente IA</a>
         <a href="https://heyamigo.io" data-i18n="foot_app">Abrir la app</a>
       </div>
       <div class="foot-col">
@@ -431,166 +534,169 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:48px
 <script>
 const I18N = {
   es:{
-    meta_desc:"Hey Amigo es la plataforma con un agente de IA que acompaña a cada migrante: planifica tu viaje, organiza tus trámites y encuentra tu comunidad.",
-    nav_ruta:"La Ruta",nav_mod:"Funciones",nav_agente:"Agente IA",nav_faq:"Preguntas",
+    meta_desc:"Hey Amigo es la plataforma con un Asistente IA que acompaña a cada migrante: planifica tu viaje, organiza tus trámites y encuentra tu comunidad.",
+    nav_ruta:"La Ruta",nav_mod:"Funciones",nav_agente:"Asistente IA",nav_faq:"Preguntas",
     nav_login:"Iniciar sesión",nav_signup:"Inscribirse",
-    hero_eyebrow:"Tu compañero de migración",
+    hero_eyebrow:"Asistente IA para migrantes",
     hero_title:'No migras solo. <span class="serif-it">Migras con un amigo.</span>',
-    hero_lead:"Hey Amigo es la plataforma con un agente de inteligencia artificial que te acompaña paso a paso: planifica tu viaje, organiza tus trámites y encuentra tu comunidad en tu nuevo país.",
+    hero_lead:"Hey Amigo es la plataforma con un Asistente IA que te acompaña paso a paso: planifica tu viaje, organiza tus trámites y encuentra tu comunidad en tu nuevo país.",
     hero_cta:"Empezar gratis",hero_login:"Ya tengo cuenta",
-    hero_note:"Gratis para empezar · Tu amigo disponible 24/7",
+    hero_note:"Gratis para empezar · Tu Asistente IA disponible 24/7",
     hero_flags:"Acompañando viajes hacia Europa:",
-    phone_greet:'Hola, <span class="serif-it">Rafael</span>',
+    phone_greet:"Asistente IA",
     phone_b1:"¿A qué país estás <i>migrando</i>? Te preparo tu ruta paso a paso. 🧭",
     phone_b2:"A España, desde Venezuela 🇻🇪",
     phone_b3:"¡Genial! Empecemos por tu visado y el empadronamiento.",
     phone_chip1:"📄 Mis documentos",phone_chip2:"🗓 Mi agenda",
-    stat1:"Agente de IA disponible",stat2:"Idiomas: ES · EN · FR",stat3:"Lugar para todo tu proceso",stat4:"Pensado para el migrante",
+    stat1:"Asistente IA disponible",stat2:"Idiomas: ES · EN · FR",stat3:"Lugar para todo tu proceso",stat4:"Pensado para el migrante",
     ruta_eyebrow:"La Ruta",
     ruta_title:'Migrar es un <span class="serif-it">viaje</span>. Te guiamos en cada parada.',
-    ruta_lead:"Tu amigo convierte un proceso confuso en pasos claros. Sabes siempre dónde estás y qué viene después.",
-    ruta_s1_t:"1 · Planifica antes de salir",ruta_s1_d:"Cuéntale a tu amigo a dónde vas. Crea tu plan, tu lista de documentos y tu calendario antes de subir al avión.",
-    ruta_s2_t:"2 · Llega y oriéntate",ruta_s2_d:"Recién llegado, todo es nuevo. Tu amigo te explica los primeros pasos: dónde ir, qué hacer y cómo moverte.",
-    ruta_s3_t:"3 · Trámites y documentos",ruta_s3_d:"Visados, empadronamiento, papeles… Tu amigo te dice qué necesitas, en qué orden y te lo recuerda a tiempo.",
+    ruta_lead:"Tu Asistente IA convierte un proceso confuso en pasos claros. Sabes siempre dónde estás y qué viene después.",
+    ruta_s1_t:"1 · Planifica antes de salir",ruta_s1_d:"Cuéntale a tu Asistente IA a dónde vas. Crea tu plan, tu lista de documentos y tu calendario antes de subir al avión.",
+    ruta_s2_t:"2 · Llega y oriéntate",ruta_s2_d:"Recién llegado, todo es nuevo. Tu Asistente IA te explica los primeros pasos: dónde ir, qué hacer y cómo moverte.",
+    ruta_s3_t:"3 · Trámites y documentos",ruta_s3_d:"Visados, empadronamiento, papeles… Tu Asistente IA te dice qué necesitas, en qué orden y te lo recuerda a tiempo.",
     ruta_s4_t:"4 · Encuentra tu comunidad",ruta_s4_d:"No estás solo. Conecta con otras personas que ya hicieron tu mismo camino y construye tu nueva vida.",
     mod_eyebrow:"Todo en un solo lugar",mod_title:"Una plataforma, todo lo que necesitas",
-    mod_lead:"Cada módulo está conectado con tu agente de IA, así que todo trabaja junto por ti.",
-    m1_t:"Agente de IA",m1_d:"Tu amigo personal que entiende tu situación, responde tus dudas y te guía a través de toda la app.",
+    mod_lead:"Cada módulo está conectado con tu Asistente IA, así que todo trabaja junto por ti.",
+    m1_t:"Asistente IA",m1_d:"Tu asistente de IA personal: entiende tu situación, responde tus dudas y te guía por toda la app.",
     m2_t:"La Guía",m2_d:"Tu ruta de migración paso a paso, adaptada a tu país de origen y destino.",
     m3_t:"Agenda",m3_d:"Citas, plazos y recordatorios para que no se te pase ningún trámite importante.",
     m4_t:"Documentos",m4_d:"Guarda y organiza tus papeles importantes en un lugar seguro y siempre a mano.",
     m5_t:"Recursos",m5_d:"Información verificada, trámites, derechos y servicios útiles de tu nuevo país.",
     m6_t:"Comunidad",m6_d:"Conecta con otros migrantes, comparte experiencias y siéntete acompañado.",
-    ag_eyebrow:"El corazón de Hey Amigo",ag_title:"Un amigo que entiende lo que vives",
-    ag_p1:"El agente de IA no es un chatbot frío. Conoce tu plan, tus documentos y tu agenda, y te habla en tu idioma con calidez.",
+    ag_eyebrow:"El corazón de Hey Amigo",ag_title:"Un Asistente IA que entiende lo que vives",
+    ag_p1:"El Asistente IA no es un chatbot frío. Conoce tu plan, tus documentos y tu agenda, y te habla en tu idioma con calidez.",
     ag_p2:'Pregúntale lo que sea: desde "¿cómo me empadrono?" hasta "tengo miedo, ¿por dónde empiezo?".',
-    ag_cta:"Hablar con mi amigo",
+    ag_cta:"Hablar con el Asistente IA",
     ag_b1:"Acabo de llegar y no sé por dónde empezar 😟",
     ag_b2:"Tranquilo, estoy contigo. Lo primero es el empadronamiento. Te he añadido los 3 pasos a tu agenda. ¿Vamos juntos?",
     ag_b3:"Sí, por favor 🙏",
     t_eyebrow:"Historias reales",t_title:"Personas que ya no caminan solas",
     t1_q:'"Llegué a Madrid sin conocer a nadie. Hey Amigo me organizó los trámites y me sentí acompañado desde el primer día."',t1_w:"Venezuela → España",
     t2_q:'"La agenda con recordatorios me salvó. No se me pasó ni una cita importante de mis papeles."',t2_w:"Marruecos → Francia",
-    t3_q:'"Poder preguntarle cualquier cosa al agente, a cualquier hora y en mi idioma, me quitó muchísima ansiedad."',t3_w:"Colombia → Alemania",
+    t3_q:'"Poder preguntarle cualquier cosa al Asistente IA, a cualquier hora y en mi idioma, me quitó muchísima ansiedad."',t3_w:"Colombia → Alemania",
     f_eyebrow:"Preguntas frecuentes",f_title:"Resolvemos tus dudas",
     f1_q:"¿Hey Amigo es gratis?",f1_a:"Puedes empezar gratis y usar las funciones esenciales sin coste. Más adelante podrás ampliar con funciones avanzadas.",
-    f2_q:"¿En qué idiomas está disponible?",f2_a:"Esta web está en español, inglés y francés. Dentro de la app, tu amigo de IA puede comunicarse contigo en tu idioma.",
+    f2_q:"¿En qué idiomas está disponible?",f2_a:"Esta web está en español, inglés y francés. Dentro de la app, tu Asistente IA puede comunicarse contigo en tu idioma.",
     f3_q:"¿Mis documentos están seguros?",f3_a:"Sí. Tus documentos se guardan de forma privada y solo tú decides qué compartes. Cuidamos tu información como propia.",
     f4_q:"¿Sirve si todavía no he migrado?",f4_a:"¡Claro! Hey Amigo te ayuda a planificar antes de salir y te acompaña una vez que llegas a tu nuevo país.",
-    f5_q:"¿Cómo empiezo?",f5_a:'Solo pulsa "Empezar gratis", crea tu cuenta en la app y tu amigo te guiará desde el primer mensaje.',
-    cta_title:"Tu nuevo comienzo merece un buen amigo",cta_p:"Crea tu cuenta hoy y da el primer paso de tu ruta, acompañado.",
+    f5_q:"¿Cómo empiezo?",f5_a:'Solo pulsa "Empezar gratis", crea tu cuenta en la app y tu Asistente IA te guiará desde el primer mensaje.',
+    cta_title:"Tu nuevo comienzo merece un buen amigo",cta_p:"Crea tu cuenta hoy y da el primer paso de tu ruta, con tu Asistente IA al lado.",
     cta_signup:"Empezar gratis",cta_login:"Iniciar sesión",
-    foot_tag:"La plataforma que acompaña a cada migrante en su camino, con un amigo de IA siempre a su lado.",
+    foot_tag:"La plataforma que acompaña a cada migrante en su camino, con un Asistente IA siempre a su lado.",
     foot_prod:"Producto",foot_app:"Abrir la app",foot_help:"Ayuda",
-    foot_made:"Hecho con cariño para quienes empiezan de nuevo 🌍"
+    foot_made:"Hecho con cariño para quienes empiezan de nuevo 🌍",
+    demo_eyebrow:"Demo interactiva",demo_title:"Así se siente Hey Amigo por dentro",demo_lead:"Muévete entre los módulos y descubre cómo tu Asistente IA lo conecta todo."
   },
   en:{
-    meta_desc:"Hey Amigo is the platform with an AI agent that accompanies every migrant: plan your journey, organize your paperwork and find your community.",
-    nav_ruta:"The Route",nav_mod:"Features",nav_agente:"AI Agent",nav_faq:"FAQ",
+    meta_desc:"Hey Amigo is the platform with an AI Assistant that accompanies every migrant: plan your journey, organize your paperwork and find your community.",
+    nav_ruta:"The Route",nav_mod:"Features",nav_agente:"AI Assistant",nav_faq:"FAQ",
     nav_login:"Log in",nav_signup:"Sign up",
-    hero_eyebrow:"Your migration companion",
+    hero_eyebrow:"AI assistant for migrants",
     hero_title:'You don\'t migrate alone. <span class="serif-it">You migrate with a friend.</span>',
-    hero_lead:"Hey Amigo is the platform with an AI agent that walks with you step by step: plan your journey, organize your paperwork and find your community in your new country.",
+    hero_lead:"Hey Amigo is the platform with an AI Assistant that walks with you step by step: plan your journey, organize your paperwork and find your community in your new country.",
     hero_cta:"Start free",hero_login:"I have an account",
-    hero_note:"Free to start · Your friend available 24/7",
+    hero_note:"Free to start · Your AI Assistant available 24/7",
     hero_flags:"Accompanying journeys to Europe:",
-    phone_greet:'Hi, <span class="serif-it">Rafael</span>',
+    phone_greet:"AI Assistant",
     phone_b1:"Which country are you <i>migrating</i> to? I'll prepare your route step by step. 🧭",
     phone_b2:"To Spain, from Venezuela 🇻🇪",
     phone_b3:"Great! Let's start with your visa and registration.",
     phone_chip1:"📄 My documents",phone_chip2:"🗓 My agenda",
-    stat1:"AI agent available",stat2:"Languages: ES · EN · FR",stat3:"One place for your whole process",stat4:"Built for the migrant",
+    stat1:"AI assistant available",stat2:"Languages: ES · EN · FR",stat3:"One place for your whole process",stat4:"Built for the migrant",
     ruta_eyebrow:"The Route",
     ruta_title:'Migrating is a <span class="serif-it">journey</span>. We guide you at every stop.',
-    ruta_lead:"Your friend turns a confusing process into clear steps. You always know where you are and what comes next.",
-    ruta_s1_t:"1 · Plan before you leave",ruta_s1_d:"Tell your friend where you're going. Build your plan, your document checklist and your calendar before you board the plane.",
-    ruta_s2_t:"2 · Arrive and get your bearings",ruta_s2_d:"Just arrived, everything is new. Your friend explains the first steps: where to go, what to do and how to get around.",
-    ruta_s3_t:"3 · Paperwork and documents",ruta_s3_d:"Visas, registration, papers… Your friend tells you what you need, in what order, and reminds you on time.",
+    ruta_lead:"Your AI Assistant turns a confusing process into clear steps. You always know where you are and what comes next.",
+    ruta_s1_t:"1 · Plan before you leave",ruta_s1_d:"Tell your AI Assistant where you're going. Build your plan, your document checklist and your calendar before you board the plane.",
+    ruta_s2_t:"2 · Arrive and get your bearings",ruta_s2_d:"Just arrived, everything is new. Your AI Assistant explains the first steps: where to go, what to do and how to get around.",
+    ruta_s3_t:"3 · Paperwork and documents",ruta_s3_d:"Visas, registration, papers… Your AI Assistant tells you what you need, in what order, and reminds you on time.",
     ruta_s4_t:"4 · Find your community",ruta_s4_d:"You're not alone. Connect with others who've walked your same path and build your new life.",
     mod_eyebrow:"Everything in one place",mod_title:"One platform, everything you need",
-    mod_lead:"Every module is connected to your AI agent, so everything works together for you.",
-    m1_t:"AI Agent",m1_d:"Your personal friend who understands your situation, answers your questions and guides you through the whole app.",
+    mod_lead:"Every module is connected to your AI Assistant, so everything works together for you.",
+    m1_t:"AI Assistant",m1_d:"Your personal AI assistant: it understands your situation, answers your questions and guides you through the whole app.",
     m2_t:"The Guide",m2_d:"Your step-by-step migration route, tailored to your origin and destination countries.",
     m3_t:"Agenda",m3_d:"Appointments, deadlines and reminders so you never miss an important task.",
     m4_t:"Documents",m4_d:"Store and organize your important papers in a safe place, always within reach.",
     m5_t:"Resources",m5_d:"Verified information, procedures, rights and useful services in your new country.",
     m6_t:"Community",m6_d:"Connect with other migrants, share experiences and feel accompanied.",
-    ag_eyebrow:"The heart of Hey Amigo",ag_title:"A friend who understands what you're going through",
-    ag_p1:"The AI agent isn't a cold chatbot. It knows your plan, your documents and your agenda, and speaks to you warmly in your language.",
+    ag_eyebrow:"The heart of Hey Amigo",ag_title:"An AI Assistant that understands what you're going through",
+    ag_p1:"The AI Assistant isn't a cold chatbot. It knows your plan, your documents and your agenda, and speaks to you warmly in your language.",
     ag_p2:'Ask it anything: from "how do I register?" to "I\'m scared, where do I start?".',
-    ag_cta:"Talk to my friend",
+    ag_cta:"Talk to the AI Assistant",
     ag_b1:"I just arrived and don't know where to start 😟",
     ag_b2:"Don't worry, I'm with you. First is your registration. I've added the 3 steps to your agenda. Shall we do it together?",
     ag_b3:"Yes, please 🙏",
     t_eyebrow:"Real stories",t_title:"People who no longer walk alone",
     t1_q:'"I arrived in Madrid not knowing anyone. Hey Amigo organized my paperwork and I felt accompanied from day one."',t1_w:"Venezuela → Spain",
     t2_q:'"The agenda with reminders saved me. I didn\'t miss a single important appointment for my papers."',t2_w:"Morocco → France",
-    t3_q:'"Being able to ask the agent anything, at any hour and in my language, took away so much anxiety."',t3_w:"Colombia → Germany",
+    t3_q:'"Being able to ask the AI Assistant anything, at any hour and in my language, took away so much anxiety."',t3_w:"Colombia → Germany",
     f_eyebrow:"Frequently asked questions",f_title:"We answer your questions",
     f1_q:"Is Hey Amigo free?",f1_a:"You can start free and use the essential features at no cost. Later you can expand with advanced features.",
-    f2_q:"What languages is it available in?",f2_a:"This website is in Spanish, English and French. Inside the app, your AI friend can communicate with you in your language.",
+    f2_q:"What languages is it available in?",f2_a:"This website is in Spanish, English and French. Inside the app, your AI Assistant can communicate with you in your language.",
     f3_q:"Are my documents safe?",f3_a:"Yes. Your documents are stored privately and only you decide what you share. We care for your information as our own.",
     f4_q:"Does it work if I haven't migrated yet?",f4_a:"Of course! Hey Amigo helps you plan before you leave and accompanies you once you arrive in your new country.",
-    f5_q:"How do I start?",f5_a:'Just tap "Start free", create your account in the app and your friend will guide you from the first message.',
-    cta_title:"Your new beginning deserves a good friend",cta_p:"Create your account today and take the first step of your route, accompanied.",
+    f5_q:"How do I start?",f5_a:'Just tap "Start free", create your account in the app and your AI Assistant will guide you from the first message.',
+    cta_title:"Your new beginning deserves a good friend",cta_p:"Create your account today and take the first step of your route, with your AI Assistant by your side.",
     cta_signup:"Start free",cta_login:"Log in",
-    foot_tag:"The platform that accompanies every migrant on their journey, with an AI friend always by their side.",
+    foot_tag:"The platform that accompanies every migrant on their journey, with an AI Assistant always by their side.",
     foot_prod:"Product",foot_app:"Open the app",foot_help:"Help",
-    foot_made:"Made with care for those starting over 🌍"
+    foot_made:"Made with care for those starting over 🌍",
+    demo_eyebrow:"Interactive demo",demo_title:"This is how Hey Amigo feels inside",demo_lead:"Move between the modules and discover how your AI Assistant connects everything."
   },
   fr:{
-    meta_desc:"Hey Amigo est la plateforme avec un agent IA qui accompagne chaque migrant : planifiez votre voyage, organisez vos démarches et trouvez votre communauté.",
-    nav_ruta:"L'Itinéraire",nav_mod:"Fonctions",nav_agente:"Agent IA",nav_faq:"FAQ",
+    meta_desc:"Hey Amigo est la plateforme avec un Assistant IA qui accompagne chaque migrant : planifiez votre voyage, organisez vos démarches et trouvez votre communauté.",
+    nav_ruta:"L'Itinéraire",nav_mod:"Fonctions",nav_agente:"Assistant IA",nav_faq:"FAQ",
     nav_login:"Se connecter",nav_signup:"S'inscrire",
-    hero_eyebrow:"Votre compagnon de migration",
+    hero_eyebrow:"Assistant IA pour les migrants",
     hero_title:'On ne migre pas seul. <span class="serif-it">On migre avec un ami.</span>',
-    hero_lead:"Hey Amigo est la plateforme avec un agent d'intelligence artificielle qui vous accompagne pas à pas : planifiez votre voyage, organisez vos démarches et trouvez votre communauté dans votre nouveau pays.",
+    hero_lead:"Hey Amigo est la plateforme avec un Assistant IA qui vous accompagne pas à pas : planifiez votre voyage, organisez vos démarches et trouvez votre communauté dans votre nouveau pays.",
     hero_cta:"Commencer gratuitement",hero_login:"J'ai déjà un compte",
-    hero_note:"Gratuit pour commencer · Votre ami disponible 24h/24",
+    hero_note:"Gratuit pour commencer · Votre Assistant IA disponible 24h/24",
     hero_flags:"Accompagnant les voyages vers l'Europe :",
-    phone_greet:'Bonjour, <span class="serif-it">Rafael</span>',
+    phone_greet:"Assistant IA",
     phone_b1:"Vers quel pays <i>migrez</i>-vous ? Je prépare votre itinéraire pas à pas. 🧭",
     phone_b2:"Vers l'Espagne, depuis le Venezuela 🇻🇪",
     phone_b3:"Parfait ! Commençons par votre visa et votre inscription.",
     phone_chip1:"📄 Mes documents",phone_chip2:"🗓 Mon agenda",
-    stat1:"Agent IA disponible",stat2:"Langues : ES · EN · FR",stat3:"Un seul endroit pour tout",stat4:"Conçu pour le migrant",
+    stat1:"Assistant IA disponible",stat2:"Langues : ES · EN · FR",stat3:"Un seul endroit pour tout",stat4:"Conçu pour le migrant",
     ruta_eyebrow:"L'Itinéraire",
     ruta_title:'Migrer est un <span class="serif-it">voyage</span>. Nous vous guidons à chaque étape.',
-    ruta_lead:"Votre ami transforme un processus confus en étapes claires. Vous savez toujours où vous en êtes et ce qui vient ensuite.",
-    ruta_s1_t:"1 · Planifiez avant de partir",ruta_s1_d:"Dites à votre ami où vous allez. Créez votre plan, votre liste de documents et votre calendrier avant de monter dans l'avion.",
-    ruta_s2_t:"2 · Arrivez et orientez-vous",ruta_s2_d:"À peine arrivé, tout est nouveau. Votre ami vous explique les premières étapes : où aller, quoi faire et comment vous déplacer.",
-    ruta_s3_t:"3 · Démarches et documents",ruta_s3_d:"Visas, inscription, papiers… Votre ami vous dit ce qu'il faut, dans quel ordre, et vous le rappelle à temps.",
+    ruta_lead:"Votre Assistant IA transforme un processus confus en étapes claires. Vous savez toujours où vous en êtes et ce qui vient ensuite.",
+    ruta_s1_t:"1 · Planifiez avant de partir",ruta_s1_d:"Dites à votre Assistant IA où vous allez. Créez votre plan, votre liste de documents et votre calendrier avant de monter dans l'avion.",
+    ruta_s2_t:"2 · Arrivez et orientez-vous",ruta_s2_d:"À peine arrivé, tout est nouveau. Votre Assistant IA vous explique les premières étapes : où aller, quoi faire et comment vous déplacer.",
+    ruta_s3_t:"3 · Démarches et documents",ruta_s3_d:"Visas, inscription, papiers… Votre Assistant IA vous dit ce qu'il faut, dans quel ordre, et vous le rappelle à temps.",
     ruta_s4_t:"4 · Trouvez votre communauté",ruta_s4_d:"Vous n'êtes pas seul. Connectez-vous avec d'autres qui ont fait le même chemin et construisez votre nouvelle vie.",
     mod_eyebrow:"Tout au même endroit",mod_title:"Une plateforme, tout ce dont vous avez besoin",
-    mod_lead:"Chaque module est connecté à votre agent IA, donc tout travaille ensemble pour vous.",
-    m1_t:"Agent IA",m1_d:"Votre ami personnel qui comprend votre situation, répond à vos questions et vous guide dans toute l'application.",
+    mod_lead:"Chaque module est connecté à votre Assistant IA, donc tout travaille ensemble pour vous.",
+    m1_t:"Assistant IA",m1_d:"Votre assistant IA personnel : il comprend votre situation, répond à vos questions et vous guide dans toute l'application.",
     m2_t:"Le Guide",m2_d:"Votre itinéraire de migration pas à pas, adapté à vos pays d'origine et de destination.",
     m3_t:"Agenda",m3_d:"Rendez-vous, échéances et rappels pour ne manquer aucune démarche importante.",
     m4_t:"Documents",m4_d:"Conservez et organisez vos papiers importants dans un endroit sûr, toujours à portée de main.",
     m5_t:"Ressources",m5_d:"Informations vérifiées, démarches, droits et services utiles de votre nouveau pays.",
     m6_t:"Communauté",m6_d:"Connectez-vous avec d'autres migrants, partagez vos expériences et sentez-vous accompagné.",
-    ag_eyebrow:"Le cœur de Hey Amigo",ag_title:"Un ami qui comprend ce que vous vivez",
-    ag_p1:"L'agent IA n'est pas un chatbot froid. Il connaît votre plan, vos documents et votre agenda, et vous parle chaleureusement dans votre langue.",
+    ag_eyebrow:"Le cœur de Hey Amigo",ag_title:"Un Assistant IA qui comprend ce que vous vivez",
+    ag_p1:"L'Assistant IA n'est pas un chatbot froid. Il connaît votre plan, vos documents et votre agenda, et vous parle chaleureusement dans votre langue.",
     ag_p2:'Demandez-lui tout : de « comment m\'inscrire ? » à « j\'ai peur, par où commencer ? ».',
-    ag_cta:"Parler à mon ami",
+    ag_cta:"Parler à l'Assistant IA",
     ag_b1:"Je viens d'arriver et je ne sais pas par où commencer 😟",
     ag_b2:"Ne t'inquiète pas, je suis là. D'abord, ton inscription. J'ai ajouté les 3 étapes à ton agenda. On y va ensemble ?",
     ag_b3:"Oui, s'il te plaît 🙏",
     t_eyebrow:"Histoires vraies",t_title:"Des personnes qui ne marchent plus seules",
     t1_q:'« Je suis arrivé à Madrid sans connaître personne. Hey Amigo a organisé mes démarches et je me suis senti accompagné dès le premier jour. »',t1_w:"Venezuela → Espagne",
     t2_q:'« L\'agenda avec rappels m\'a sauvée. Je n\'ai manqué aucun rendez-vous important pour mes papiers. »',t2_w:"Maroc → France",
-    t3_q:'« Pouvoir poser n\'importe quelle question à l\'agent, à toute heure et dans ma langue, m\'a enlevé beaucoup d\'anxiété. »',t3_w:"Colombie → Allemagne",
+    t3_q:'« Pouvoir poser n\'importe quelle question à l\'Assistant IA, à toute heure et dans ma langue, m\'a enlevé beaucoup d\'anxiété. »',t3_w:"Colombie → Allemagne",
     f_eyebrow:"Questions fréquentes",f_title:"Nous répondons à vos questions",
     f1_q:"Hey Amigo est-il gratuit ?",f1_a:"Vous pouvez commencer gratuitement et utiliser les fonctions essentielles sans frais. Plus tard, vous pourrez ajouter des fonctions avancées.",
-    f2_q:"Dans quelles langues est-il disponible ?",f2_a:"Ce site est en espagnol, anglais et français. Dans l'application, votre ami IA peut communiquer avec vous dans votre langue.",
+    f2_q:"Dans quelles langues est-il disponible ?",f2_a:"Ce site est en espagnol, anglais et français. Dans l'application, votre Assistant IA peut communiquer avec vous dans votre langue.",
     f3_q:"Mes documents sont-ils en sécurité ?",f3_a:"Oui. Vos documents sont conservés de façon privée et vous seul décidez de ce que vous partagez. Nous prenons soin de vos informations comme des nôtres.",
     f4_q:"Est-ce utile si je n'ai pas encore migré ?",f4_a:"Bien sûr ! Hey Amigo vous aide à planifier avant de partir et vous accompagne une fois arrivé dans votre nouveau pays.",
-    f5_q:"Comment commencer ?",f5_a:'Appuyez simplement sur « Commencer gratuitement », créez votre compte dans l\'application et votre ami vous guidera dès le premier message.',
-    cta_title:"Votre nouveau départ mérite un bon ami",cta_p:"Créez votre compte aujourd'hui et faites le premier pas de votre itinéraire, accompagné.",
+    f5_q:"Comment commencer ?",f5_a:'Appuyez simplement sur « Commencer gratuitement », créez votre compte dans l\'application et votre Assistant IA vous guidera dès le premier message.',
+    cta_title:"Votre nouveau départ mérite un bon ami",cta_p:"Créez votre compte aujourd'hui et faites le premier pas de votre itinéraire, avec votre Assistant IA à vos côtés.",
     cta_signup:"Commencer gratuitement",cta_login:"Se connecter",
-    foot_tag:"La plateforme qui accompagne chaque migrant sur son chemin, avec un ami IA toujours à ses côtés.",
+    foot_tag:"La plateforme qui accompagne chaque migrant sur son chemin, avec un Assistant IA toujours à ses côtés.",
     foot_prod:"Produit",foot_app:"Ouvrir l'application",foot_help:"Aide",
-    foot_made:"Fait avec soin pour ceux qui recommencent 🌍"
+    foot_made:"Fait avec soin pour ceux qui recommencent 🌍",
+    demo_eyebrow:"Démo interactive",demo_title:"Voici Hey Amigo de l'intérieur",demo_lead:"Naviguez entre les modules et découvrez comment votre Assistant IA relie tout."
   }
 };
 
@@ -608,6 +714,7 @@ function setLang(lang){
   });
   document.getElementById('langFlag').src = "https://flagcdn.com/w40/"+FLAGS[lang]+".png";
   document.getElementById('langLabel').textContent = LABELS[lang];
+  if(typeof renderDemo==='function') renderDemo(lang);
   try{ localStorage.setItem('heyamigo_lang',lang); }catch(e){}
 }
 
@@ -618,6 +725,84 @@ langBtn.addEventListener('click',e=>{ e.stopPropagation(); langMenu.classList.to
 document.addEventListener('click',()=>langMenu.classList.remove('open'));
 langMenu.querySelectorAll('button').forEach(b=>{
   b.addEventListener('click',()=>{ setLang(b.getAttribute('data-lang')); langMenu.classList.remove('open'); });
+});
+
+// Header adaptativo al hacer scroll
+const header = document.getElementById('header');
+function onScroll(){ header.classList.toggle('scrolled', window.scrollY > 40); }
+window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+// ===== Demo interactiva de la app =====
+const DEMO = {
+  es:{tabs:{agenda:"Agenda",guia:"Guía",asistente:"Asistente",comunidad:"Comunidad",perfil:"Perfil"},
+    hint:"Toca los iconos para moverte entre módulos",
+    asistente:{greet:"Hola, Daniel 👋",msgs:[["ai","¿En qué te ayudo hoy? Puedo revisar tus trámites, tu agenda o resolver tus dudas."],["me","¿Qué me toca esta semana?"],["ai","El jueves tienes el empadronamiento. Te dejé los 3 documentos listos ✅"]]},
+    agenda:{title:"Próximas citas",items:[["Empadronamiento","⏳ en 3 días · jue 10:00",1],["Cita médica","22 jun · 12:30",0],["Renovación NIE","5 jul",0]]},
+    guia:{title:"La Ruta",steps:[["Planifica tu viaje","done"],["Llega y oriéntate","now"],["Trámites y documentos",""],["Encuentra tu comunidad",""]]},
+    comunidad:{title:"Comunidad",posts:[["María","ve","¿Alguien sabe dónde renovar el abono de transporte en Madrid?"],["Karim","ma","¡Conseguí mi NIE! Gracias por los consejos 🙌"]]},
+    perfil:{name:"Daniel",origin:"Venezuela → España",from:"ve",to:"es",stats:[["32","días en España"],["4","trámites listos"],["87","frases usadas"]]}},
+  en:{tabs:{agenda:"Agenda",guia:"Guide",asistente:"Assistant",comunidad:"Community",perfil:"Profile"},
+    hint:"Tap the icons to move between modules",
+    asistente:{greet:"Hi, Daniel 👋",msgs:[["ai","How can I help today? I can check your paperwork, your agenda or answer your questions."],["me","What's on my plate this week?"],["ai","On Thursday you have your registration. I've prepared the 3 documents ✅"]]},
+    agenda:{title:"Upcoming appointments",items:[["Town hall registration","⏳ in 3 days · Thu 10:00",1],["Doctor's appointment","Jun 22 · 12:30",0],["NIE renewal","Jul 5",0]]},
+    guia:{title:"The Route",steps:[["Plan your journey","done"],["Arrive & settle in","now"],["Paperwork & documents",""],["Find your community",""]]},
+    comunidad:{title:"Community",posts:[["María","ve","Does anyone know where to renew the transport pass in Madrid?"],["Karim","ma","Got my NIE! Thanks for the tips 🙌"]]},
+    perfil:{name:"Daniel",origin:"Venezuela → Spain",from:"ve",to:"es",stats:[["32","days in Spain"],["4","tasks done"],["87","phrases used"]]}},
+  fr:{tabs:{agenda:"Agenda",guia:"Guide",asistente:"Assistant",comunidad:"Communauté",perfil:"Profil"},
+    hint:"Touchez les icônes pour naviguer entre les modules",
+    asistente:{greet:"Bonjour, Daniel 👋",msgs:[["ai","Comment puis-je t'aider aujourd'hui ? Je peux vérifier tes démarches, ton agenda ou répondre à tes questions."],["me","Qu'est-ce qui m'attend cette semaine ?"],["ai","Jeudi, tu as ton inscription. J'ai préparé les 3 documents ✅"]]},
+    agenda:{title:"Prochains rendez-vous",items:[["Inscription en mairie","⏳ dans 3 jours · jeu 10:00",1],["Rendez-vous médical","22 juin · 12:30",0],["Renouvellement NIE","5 juil",0]]},
+    guia:{title:"L'Itinéraire",steps:[["Planifie ton voyage","done"],["Arrive et installe-toi","now"],["Démarches et documents",""],["Trouve ta communauté",""]]},
+    comunidad:{title:"Communauté",posts:[["María","ve","Quelqu'un sait où renouveler le pass transport à Madrid ?"],["Karim","ma","J'ai eu mon NIE ! Merci pour les conseils 🙌"]]},
+    perfil:{name:"Daniel",origin:"Venezuela → Espagne",from:"ve",to:"es",stats:[["32","jours en Espagne"],["4","démarches faites"],["87","phrases utilisées"]]}}
+};
+let demoCurrent='asistente';
+function flagImg(c){return '<img class="fl" src="https://flagcdn.com/w40/'+c+'.png" alt="">';}
+function demoScreenHTML(d,name){
+  if(name==='asistente'){
+    let h='<div class="d-greet"><svg class="globe float" viewBox="0 0 48 48"><use href="#globe-shape"/></svg><h4>'+d.asistente.greet+'</h4></div>';
+    d.asistente.msgs.forEach(m=>{h+='<div class="d-bubble '+(m[0]==='me'?'me':'ai')+'">'+m[1]+'</div>';});
+    return h;
+  }
+  if(name==='agenda'){
+    let h='<div class="d-title">'+d.agenda.title+'</div>';
+    d.agenda.items.forEach(it=>{h+='<div class="d-item'+(it[2]?' hot':'')+'"><span class="d-dot"></span><div><b>'+it[0]+'</b><span>'+it[1]+'</span></div></div>';});
+    return h;
+  }
+  if(name==='guia'){
+    let h='<div class="d-title">'+d.guia.title+'</div><div class="d-route">';
+    d.guia.steps.forEach((s,i)=>{h+='<div class="d-step '+s[1]+'"><span class="d-node">'+(s[1]==='done'?'✓':(i+1))+'</span><span>'+s[0]+'</span></div>';});
+    return h+'</div>';
+  }
+  if(name==='comunidad'){
+    let h='<div class="d-title">'+d.comunidad.title+'</div>';
+    d.comunidad.posts.forEach(p=>{h+='<div class="d-post"><span class="d-av">'+p[0][0]+'</span><div><b>'+p[0]+' '+flagImg(p[1])+'</b><span>'+p[2]+'</span></div></div>';});
+    return h;
+  }
+  if(name==='perfil'){
+    const s=d.perfil;
+    let h='<div class="d-prof"><div class="d-pav">'+s.name[0]+'</div><h4>'+s.name+'</h4><div class="d-origin">'+flagImg(s.from)+flagImg(s.to)+' '+s.origin+'</div></div><div class="d-stats">';
+    s.stats.forEach(st=>{h+='<div class="d-stat"><b>'+st[0]+'</b><span>'+st[1]+'</span></div>';});
+    return h+'</div>';
+  }
+  return '';
+}
+function renderDemo(lang){
+  const d=DEMO[lang]||DEMO.es;
+  const body=document.getElementById('demoBody'); if(!body) return;
+  body.innerHTML=demoScreenHTML(d,demoCurrent);
+  body.classList.remove('swap'); void body.offsetWidth; body.classList.add('swap');
+  document.querySelectorAll('#demoTabs .d-tab').forEach(t=>{
+    const k=t.getAttribute('data-screen');
+    t.classList.toggle('on',k===demoCurrent);
+    const lbl=t.querySelector('.d-lbl'); if(lbl) lbl.textContent=d.tabs[k];
+  });
+  const hint=document.getElementById('demoHint'); if(hint) hint.textContent=d.hint;
+}
+document.addEventListener('click',e=>{
+  const tab=e.target.closest('#demoTabs .d-tab'); if(!tab) return;
+  demoCurrent=tab.getAttribute('data-screen');
+  renderDemo(document.documentElement.lang||'es');
 });
 
 // Idioma inicial: guardado > navegador > español
